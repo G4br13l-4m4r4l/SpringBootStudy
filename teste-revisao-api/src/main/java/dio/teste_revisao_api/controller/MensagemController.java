@@ -20,7 +20,11 @@ public class MensagemController {
 
     @PostMapping()
     public void Envio(@RequestBody Mensagem mensagem) {
-
+        mensagemRepository.enviarMensagem(mensagem);
+    }
+    @PutMapping
+    public void Alterar(@RequestBody Mensagem mensagem) {
+        mensagemRepository.enviarMensagem(mensagem);
     }
 
 }

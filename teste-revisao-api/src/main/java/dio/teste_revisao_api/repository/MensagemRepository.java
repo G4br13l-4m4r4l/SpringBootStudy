@@ -1,5 +1,6 @@
 package dio.teste_revisao_api.repository;
 
+import dio.teste_revisao_api.handler.BusinessException;
 import dio.teste_revisao_api.model.Mensagem;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,10 @@ public class MensagemRepository {
     private List<Mensagem> mensagens;
 
     public void enviarMensagem(Mensagem mensagem) {
+        if(Objects.isNull(mensagens)){
+            throw new BusinessException("Objetos inválido!");
+        }
+
         mensagens.add(mensagem);
         System.out.println("Mensagem enviada com sucesso!");
     }
@@ -36,7 +41,10 @@ public class MensagemRepository {
     public List<Mensagem> verMensagens() {
         if(Objects.isNull(mensagens)) {
             mensagens = new ArrayList<>();
-            mensagens.add(new Mensagem());
+            mensagens.add(new Mensagem("sending mensage","text","text sendind"));
+            mensagens.add(new Mensagem("sending mensage2","text2","text sendind2"));
+            mensagens.add(new Mensagem("sending mensage3","text3","text sendind3"));
+            mensagens.add(new Mensagem("sending mensage4","text4","text sendind4"));
         }
         return mensagens;
     }
