@@ -22,6 +22,11 @@ public class MensagemController {
     public void Envio(@RequestBody Mensagem mensagem) {
         mensagemRepository.enviarMensagem(mensagem);
     }
+    @DeleteMapping()
+    public void Excluir(@RequestBody String titulo) {
+        mensagemRepository.apagarMensagem(titulo);
+    }
+
     @PutMapping
     public void Alterar(@RequestBody Mensagem mensagem) {
         mensagemRepository.enviarMensagem(mensagem);
